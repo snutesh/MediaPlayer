@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="BORDER_PANE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicplayer.FXMLDocumentController">
+   <center>
+      <AnchorPane prefHeight="568.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+         <children>
+            <ListView fx:id="CENTER_LIST_VIEW" layoutX="302.0" layoutY="162.0" prefHeight="568.0" prefWidth="1056.0" style="-fx-fixed-cell-size: 40; -fx-background-image: url(&quot;/images/center.png&quot;); -fx-background-size: cover;" styleClass="list-cell" stylesheets="@listview.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <AnchorPane prefHeight="568.0" prefWidth="310.0" style="-fx-background-image: url(&quot;/images/left.png&quot;); -fx-background-size: cover;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="SEARCH_BOX" layoutX="14.0" layoutY="14.0" onKeyReleased="#SearchKeyReleased" prefHeight="35.0" prefWidth="283.0" promptText="Search" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Label fx:id="NOW_PLAYING" layoutX="15.0" layoutY="61.0" onMouseClicked="#NowPlayingClicked" prefHeight="35.0" stylesheets="@listview.css" text="    Now Playing" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="MY_MUSIC" layoutX="15.0" layoutY="96.0" onMouseClicked="#MyMusicClicked" prefHeight="35.0" prefWidth="278.0" stylesheets="@listview.css" text="    My Music" AnchorPane.rightAnchor="15.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="ADD_TO_PLAYLIST" layoutX="15.0" layoutY="131.0" onMouseClicked="#AddPlaylistClicked" prefHeight="35.0" stylesheets="@listview.css" text="    Add to Playlist" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="REMOVE_FROM_PLAYLIST" layoutX="17.0" layoutY="166.0" onMouseClicked="#RemovePlaylistClicked" prefHeight="35.0" stylesheets="@listview.css" text="    Remove from Playlist" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <bottom>
+      <AnchorPane prefHeight="161.0" prefWidth="1366.0" style="-fx-background-color: #f44260;" stylesheets="@listview.css" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="PLAY_BUTTON" layoutX="648.0" layoutY="49.0" mnemonicParsing="false" onAction="#PlayButtonClicked" prefHeight="70.0" prefWidth="70.0" style="-fx-background-image: url(&quot;/images/play.png&quot;);" stylesheets="@listview.css" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Material Icons" size="20.0" />
+               </font></Button>
+            <Button fx:id="NEXT_BUTTON" layoutX="737.0" layoutY="61.0" mnemonicParsing="false" onAction="#NextButtonClicked" prefHeight="50.0" prefWidth="50.0" style="-fx-background-image: url(&quot;/images/next.png&quot;);" stylesheets="@listview.css" textAlignment="CENTER" />
+            <Button fx:id="REPEAT_BUTTON" layoutX="802.0" layoutY="61.0" mnemonicParsing="false" onAction="#RepeatButtonClicked" prefHeight="50.0" prefWidth="50.0" style="-fx-background-image: url(&quot;/images/repeat.png&quot;);" stylesheets="@listview.css" textAlignment="CENTER" />
+            <Button fx:id="PAUSE_BUTTON" layoutX="515.0" layoutY="61.0" mnemonicParsing="false" onAction="#PauseButtonClicked" prefHeight="50.0" prefWidth="50.0" style="-fx-background-image: url(&quot;/images/stop.png&quot;);" stylesheets="@listview.css" textAlignment="CENTER" />
+            <Button fx:id="PREV_BUTTON" layoutX="580.0" layoutY="61.0" mnemonicParsing="false" onAction="#PrevButtonClicked" prefHeight="50.0" prefWidth="50.0" style="-fx-background-image: url(&quot;/images/prev.png&quot;);" stylesheets="@listview.css" textAlignment="CENTER" />
+            <Label fx:id="SONG_DISPLAY" layoutX="14.0" layoutY="44.0" prefHeight="85.0" prefWidth="467.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

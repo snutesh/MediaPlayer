@@ -1,0 +1,18 @@
+.list-cell{
+    -fx-font-size:15.0;
+}
+.button{
+    -fx-background-color: #f44260;
+    -fx-background-radius: 35;
+}
+.button:hover{
+    -fx-background-radius: 35;
+    -fx-border-color: white;
+    -fx-border-radius: 35;
+}
+.label:hover{
+    -fx-border-color: white;
+}
+.list-cell:hover{
+    -fx-border-color: blue;
+}
