@@ -49,7 +49,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button PREV_BUTTON;
     @FXML
-    private ListView <String> CENTER_LIST_VIEW;
+    private ListView<String> CENTER_LIST_VIEW;
     @FXML
     private Label SONG_DISPLAY;
     @FXML
@@ -58,7 +58,7 @@ public class FXMLDocumentController implements Initializable {
     MusicPlayer MC;
     String song;
     public static int count;
-    HashMap <String, String> hashmap;
+    HashMap<String, String> hashmap;
     String currentSong;
 
     FileReader fileReader1;
@@ -97,8 +97,7 @@ public class FXMLDocumentController implements Initializable {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally{
+        } finally {
             try {
                 fileReader1.close();
                 fileReader2.close();
@@ -130,8 +129,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void AddPlaylistClicked(MouseEvent event) {
         try {
-            fileWriter1 = new FileWriter("playlist.txt",true);
-            fileWriter2 = new FileWriter("path.txt",true);
+            fileWriter1 = new FileWriter("playlist.txt", true);
+            fileWriter2 = new FileWriter("path.txt", true);
             bufferedWriter1 = new PrintWriter(fileWriter1);
             bufferedWriter2 = new PrintWriter(fileWriter2);
             FileChooser fc = new FileChooser();
@@ -150,8 +149,7 @@ public class FXMLDocumentController implements Initializable {
             }
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally{
+        } finally {
             try {
                 fileWriter1.close();
                 fileWriter2.close();
@@ -174,44 +172,60 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void PlayButtonClicked(ActionEvent event) {
-        song = hashmap.get(CENTER_LIST_VIEW.getSelectionModel().getSelectedItem());
         if (MC.player != null) {
-            MC.Stop();
-            MC.Play(song);
-        } else {
-            MC.Play(song);
+            switch (count) {
+                case 0:
+                    count = 1;
+                    MC.Pause();
+                    break;
+                case 1:
+                    count = 0;
+                    MC.Resume();
+                    break;
+            }
         }
-        SONG_DISPLAY.setText(CENTER_LIST_VIEW.getSelectionModel().getSelectedItem());
-        currentSong = CENTER_LIST_VIEW.getSelectionModel().getSelectedItem();
-
     }
 
     @FXML
     private void NextButtonClicked(ActionEvent event) {
+        MC.Stop();
         CENTER_LIST_VIEW.getSelectionModel().selectNext();
-        PlayButtonClicked(event);
-    }
-
-    @FXML
-    private void RepeatButtonClicked(ActionEvent event) {
-        switch (count) {
-            case 0:
-                count = 1;
-                break;
-            case 1:
-                count = 0;
-                break;
-        }
+        song = hashmap.get(CENTER_LIST_VIEW.getSelectionModel().getSelectedItem());
+        MC.Play(song);
+        SONG_DISPLAY.setText(CENTER_LIST_VIEW.getSelectionModel().getSelectedItem());
+        currentSong = CENTER_LIST_VIEW.getSelectionModel().getSelectedItem();
     }
 
     @FXML
     private void PrevButtonClicked(ActionEvent event) {
+        MC.Stop();
         CENTER_LIST_VIEW.getSelectionModel().selectPrevious();
-        PlayButtonClicked(event);
+        song = hashmap.get(CENTER_LIST_VIEW.getSelectionModel().getSelectedItem());
+        MC.Play(song);
+        SONG_DISPLAY.setText(CENTER_LIST_VIEW.getSelectionModel().getSelectedItem());
+        currentSong = CENTER_LIST_VIEW.getSelectionModel().getSelectedItem();
     }
 
     @FXML
-    private void PauseButtonClicked(ActionEvent event) {
+    private void PlaylistClicked(MouseEvent event) {
+        CENTER_LIST_VIEW.setOnMouseClicked((MouseEvent click) -> {
+            if (click.getClickCount() == 2) {
+                MC.Stop();
+                song = hashmap.get(CENTER_LIST_VIEW.getSelectionModel().getSelectedItem());
+                MC.Play(song);
+                SONG_DISPLAY.setText(CENTER_LIST_VIEW.getSelectionModel().getSelectedItem());
+                currentSong = CENTER_LIST_VIEW.getSelectionModel().getSelectedItem();
+            }
+        });
+    }
+
+    @FXML
+    private void ReloadButtonClicked(ActionEvent event) {
+    }
+
+    @FXML
+    private void StopButtonClicked(ActionEvent event) {
         MC.Stop();
+        MC.player = null;
     }
 }

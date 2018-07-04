@@ -22,7 +22,7 @@ public class MusicPlayer extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Music Player");
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument_1.fxml"));
 
         Scene scene = new Scene(root);
 
@@ -39,10 +39,22 @@ public class MusicPlayer extends Application {
         player.play();
     }
 
+    public void Resume() {
+        player.play();
+    }
+
+    public void Pause() {
+        player.pause();
+    }
+
     public void Stop() {
         if (player != null) {
             player.stop();
         }
+    }
+    
+    public void Reload(){
+        
     }
 
     /**
