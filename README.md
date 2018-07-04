@@ -1,3 +1,8 @@
+# Update
+Play and Pause method added.
+
+You can play song directly by double clicking in list.
+
 # MusicPlayer
 Music player using Java
 
