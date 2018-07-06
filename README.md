@@ -1,4 +1,8 @@
 # Update
+Reload Button added.
+Tooltip added.
+
+# Update
 Play and Pause method added.
 
 You can play song directly by double clicking in list.
