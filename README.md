@@ -19,12 +19,10 @@ Till now no method has been added to remove multiple selections from list, so re
 
 To play the selected song just select the song name in list and click on play button.
 
-No pause button is added, so you can not pause a song, you can add it if you want.
+No pause button is added, so you can not pause a song.
 
 Seek slider, volume slider and duration of media is not added.
 
 Moreover search field does not work, no code is added to it.
 
 Also this is a netbeans project so if jar file doesn't work, copy all files to a folder and open it using netbeans, then buid and run it.
-
-If you find any correction or improvements please let me know it.
